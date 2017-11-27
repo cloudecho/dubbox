@@ -16,13 +16,13 @@
 
 package com.alibaba.dubbo.rpc.cluster.merger;
 
-import com.alibaba.dubbo.common.extension.ExtensionLoader;
-import com.alibaba.dubbo.common.utils.ReflectUtils;
-import com.alibaba.dubbo.rpc.cluster.Merger;
-
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
+
+import com.alibaba.dubbo.common.extension.ExtensionLoader;
+import com.alibaba.dubbo.common.utils.ReflectUtils;
+import com.alibaba.dubbo.rpc.cluster.Merger;
 
 /**
  * @author <a href="mailto:gang.lvg@alibaba-inc.com">kimi</a>
@@ -36,20 +36,21 @@ public class MergerFactory {
         Merger result;
         if (returnType.isArray()) {
             Class type = returnType.getComponentType();
-            result = mergerCache.get(type);
-            if (result == null) {
-                loadMergers();
-                result = mergerCache.get(type);
-            }
-            if(result == null && ! type.isPrimitive()) {
+            result = cachedMerger(returnType);
+            if (result == null && !type.isPrimitive()) {
                 result = ArrayMerger.INSTANCE;
             }
         } else {
+            result = cachedMerger(returnType);
+        }
+        return result;
+    }
+
+    private static <T> Merger cachedMerger(Class<T> returnType) {
+        Merger result = mergerCache.get(returnType);
+        if (result == null) {
+            loadMergers();
             result = mergerCache.get(returnType);
-            if (result == null) {
-                loadMergers();
-                result = mergerCache.get(returnType);
-            }
         }
         return result;
     }
