@@ -15,6 +15,7 @@
  */
 package com.alibaba.dubbo.config;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.alibaba.dubbo.common.Constants;
@@ -28,6 +29,7 @@ import junit.framework.Assert;
  */
 public class ReferenceConfigTest {
 
+    @Ignore
     @Test
     public void testInjvm() throws Exception {
         ApplicationConfig application = new ApplicationConfig();

@@ -28,6 +28,7 @@ import javax.script.ScriptEngineManager;
 import junit.framework.Assert;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.alibaba.dubbo.common.Constants;
@@ -531,6 +532,7 @@ public class RegistryDirectoryTest {
      * current routers
      */
     @Test
+    @Ignore
     public void testNotifyRouterUrls() {
         if (isScriptUnsupported) return;
         RegistryDirectory registryDirectory = getRegistryDirectory();

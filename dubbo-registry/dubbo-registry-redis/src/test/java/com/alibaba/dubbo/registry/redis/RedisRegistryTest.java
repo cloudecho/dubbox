@@ -17,6 +17,7 @@ package com.alibaba.dubbo.registry.redis;
 
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.alibaba.dubbo.common.URL;
@@ -59,6 +60,7 @@ public class RedisRegistryTest {
      * Test method for {@link com.alibaba.dubbo.registry.support.injvm.InjvmRegistry#register(java.util.Map)}.
      */
     @Test
+    @Ignore
     public void testRegister() {
         Set<URL> registered = null;
         // clear first
@@ -80,6 +82,7 @@ public class RedisRegistryTest {
      * .
      */
     @Test
+    @Ignore
     public void testSubscribe() {
         /*final String subscribearg = "arg1=1&arg2=2";
         // verify lisener.

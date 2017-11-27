@@ -17,6 +17,7 @@ package com.alibaba.dubbo.examples.annotation;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -30,6 +31,7 @@ import com.alibaba.dubbo.examples.annotation.action.AnnotationAction;
 public class AnnotationTest {
 
     @Test
+    @Ignore
     public void testAnnotation() {
         ClassPathXmlApplicationContext providerContext = new ClassPathXmlApplicationContext(AnnotationTest.class.getPackage().getName().replace('.', '/') + "/annotation-provider.xml");
         providerContext.start();
